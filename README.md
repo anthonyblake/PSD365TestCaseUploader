@@ -25,21 +25,12 @@
 [![project_license][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
-
-
-<!-- PROJECT LOGO -->
-<br />
-<div align="center">
-  <a href="https://github.com/github_username/repo_name">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
-
-<h3 align="center">project_title</h3>
+<h3 align="center">D365 Test Case to Azure DevOps Uploader</h3>
 
   <p align="center">
-    project_description
+    PowerShell scripts to iterate a folder of D365 Finance and Operations developer XML task recordings, parse the XML for the test steps, and upload to an Azure DevOps project as new work items with the type Test Case.
     <br />
-    <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/anthonyblake/PSD365TestCaseUploader"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <a href="https://github.com/github_username/repo_name">View Demo</a>
