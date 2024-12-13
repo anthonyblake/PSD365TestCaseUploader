@@ -65,7 +65,6 @@ You may need to run the command in this file to allow you to run the unsigned Po
 ```powershell
 set-executionpolicy remotesigned
 ```
-
 > [!WARNING]
 > This PowerShell script is currently crude. Files aren't cleaned up after uploading, and there is no error handling. If you are having issues, please reach out, but you may need to tweak the script for your needs.
 
@@ -82,70 +81,36 @@ From Dynamics 365 Finance and Operations Apps, create a number of task recording
 
 Save the recordings to the same folder as the PowerShell scripts.
 
+### Prerequisites
+
+- D365 Finance and Operations Apps instance, to create task recordings
+- Azure DevOps personal access token
+
+### Installation
+
+1. Clone the repo
+   ```sh
+   git clone https://github.com/anthonyblake/PSD365TestCaseUploader.git
+   ```
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- USAGE EXAMPLES -->
+## Usage
+
 Run the following PowerShell:
 
 ```powershell
 #Upload D365 test cases to Azure DevOps
 .\ADOUploadTestXmls.ps1 -organisation your_devops_org_name -project your_devops_project_name -pat azure_devops_personal_access_token
 ```
-
-### Prerequisites
-
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
-
-### Installation
-
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-   ```sh
-   git clone https://github.com/anthonyblake/PSD365TestCaseUploader.git
-   ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
-5. Change git remote url to avoid accidental pushes to base project
-   ```sh
-   git remote set-url origin anthonyblake/PSD365TestCaseUploader
-   git remote -v # confirm the changes
-   ```
+This will convert any XMLs in the source folder and upload them to Azure DevOps as test cases.
+_For more examples, please refer to the [My Website](https://anthonyblake.github.io)_
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- USAGE EXAMPLES -->
-## Usage
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- ROADMAP -->
-## Roadmap
-
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
-    - [ ] Nested Feature
 
 See the [open issues](https://github.com/anthonyblake/PSD365TestCaseUploader/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 <!-- CONTRIBUTING -->
 ## Contributing
@@ -169,16 +134,12 @@ Don't forget to give the project a star! Thanks again!
   <img src="https://contrib.rocks/image?repo=anthonyblake/PSD365TestCaseUploader" alt="contrib.rocks image" />
 </a>
 
-
-
 <!-- LICENSE -->
 ## License
 
-Distributed under the project_license. See `LICENSE.txt` for more information.
+Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 <!-- CONTACT -->
 ## Contact
@@ -189,18 +150,10 @@ Project Link: [https://github.com/anthonyblake/PSD365TestCaseUploader](https://g
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* []()
-* []()
-* []()
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
