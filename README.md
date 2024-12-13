@@ -106,8 +106,6 @@ Run the following PowerShell:
 This will convert any XMLs in the source folder and upload them to Azure DevOps as test cases.
 _For more examples, please refer to the [My Website](https://anthonyblake.github.io)_
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 See the [open issues](https://github.com/anthonyblake/PSD365TestCaseUploader/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
