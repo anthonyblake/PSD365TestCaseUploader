@@ -41,61 +41,53 @@
   </p>
 </div>
 
-
-
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
-  </ol>
-</details>
-
-
-
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+PowerShell scripts to iterate a folder of D365 Finance and Operations developer XML task recordings, parse the XML for the test steps, and upload to an Azure DevOps project as new work items with the type Test Case. 
 
-Here's a blank template to get started. To avoid retyping too much info, do a search and replace with your text editor for the following: `anthonyblake`, `PSD365TestCaseUploader`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`, `project_license`
+This is useful if you need to avoid using LCS, but want some automation in the creation of your Test Cases in Azure DevOps. This may be becuase you are using a BPM not in LCS, or you may be using Power Platform to deploy your D365 environments rather than LCS, or even preparing for the near future where LCS will be deprecated.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+The project contains 2 main PowerShell scripts.
 
+`ADOTestCaseUploader.ps1`
 
+This script connects to Azure DevOps via the API and uploads a single pre-formatted test case. 
+
+`ADOUploadTestXmls.ps1`
+
+This script is actually poorly named. It iterates a folder for XML files, which must be developer test XMLs generated from Dynamics 365 Finance and Operations Apps task recordings. For each XML, it opens and iterates the markup looking for test steps, which it adds to a payload ready to be uploaded to Azure DevOps as a test case. It then calls ADOTestCaseUploader to call the Azure DevOps API and upload a new work item with type test case, including a payload which contains the test case steps.
+
+`AllowUnsignedScripts.ps1`
+
+You may need to run the command in this file to allow you to run the unsigned PowerShell scripts in this repo.
+
+```powershell
+set-executionpolicy remotesigned
+```
+
+> [!WARNING]
+> This PowerShell script is currently crude. Files aren't cleaned up after uploading, and there is no error handling. If you are having issues, please reach out, but you may need to tweak the script for your needs.
 
 ### Built With
 
 [![PowerShell][PowerShell-badge]][PowerShell-url]
 
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+From Dynamics 365 Finance and Operations Apps, create a number of task recordings. At the end of each recording, click "Save as developer recording". This is the XML containing the test steps we need for Azure DevOps.
+
+Save the recordings to the same folder as the PowerShell scripts.
+
+Run the following PowerShell:
+
+```powershell
+#Upload D365 test cases to Azure DevOps
+.\ADOUploadTestXmls.ps1 -organisation your_devops_org_name -project your_devops_project_name -pat azure_devops_personal_access_token
+```
 
 ### Prerequisites
 
@@ -191,7 +183,7 @@ Distributed under the project_license. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
+Anthony Blake - [@anthonyblakedev](https://twitter.com/anthonyblakedev) - anthonyblakedev@gmail.com
 
 Project Link: [https://github.com/anthonyblake/PSD365TestCaseUploader](https://github.com/anthonyblake/PSD365TestCaseUploader)
 
